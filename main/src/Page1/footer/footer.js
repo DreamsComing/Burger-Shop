@@ -1,19 +1,47 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState } from 'react'
 import './footer.css'
 import Cake from '../images/bacground/img/cake_img.png'
 import Burger from '../images/bacground/img/burger_img.png'
 import Salad from '../images/bacground/img/salad_img.png'
 
 function Footer() {
-  return (
+    const [part2, setPart2] = useState({
+        right: "-100%"
+    })
+    const [part1, setPart1] = useState({
+        left: "5%"
+    })
+
+    const moveRightActive = () => {
+        setPart2({
+            right: "0%",
+            transition: "all 1s ease-in-out 0s"
+        })
+        setPart1({
+            left: "-100%",
+             transition: "all 1s ease-in-out 0s"
+        })
+    }
+    const moveLeftActive = () => {
+        setPart2({
+            right: "-100%",
+            transition: "all 1s ease-in-out 0s"
+        })
+        setPart1({
+            left: "5%",
+             transition: "all 1s ease-in-out 0s"
+        })
+    }
+    return (
+      
       <footer>
           
-
+   <button onClick={() => moveLeftActive()} class="leftArrow arrow">{ '<' }</button>
           <div class="border" id="border">
-              <button class="leftArrow arrow">{ '<' }</button>
+           
                 
-                <div class="part_1" id="part1">  
+                <div style={part1} class="part_1" id="part1">  
                     <a href="#">     
                         <div class="block_shadow" ></div>
 
@@ -66,7 +94,7 @@ function Footer() {
                     
                 </div>
     
-                <div class="part_2" id="part2">
+                <div style={part2} class="part_2" id="part2">
                     <a href="#" class="links_footer">
                         <div class="block_shadow" />
 
@@ -88,8 +116,9 @@ function Footer() {
                     </a>
                     
               </div>
-              <button className='rightArrow arrow'> { '>' } </button>
+
             </div>
+            <button onClick={() => moveRightActive()} className='rightArrow arrow'> { '>' } </button>
         </footer>
   )
 }
