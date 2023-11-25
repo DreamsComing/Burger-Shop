@@ -12,6 +12,12 @@ function Footer() {
     const [part1, setPart1] = useState({
         left: "5%"
     })
+    const [leftLimit, setLeftLimit] = useState({
+        color: "#000"
+    })
+    const [rightLimit, setRightLimit] = useState({
+        color: "#000"
+    })
 
     const moveRightActive = () => {
         setPart2({
@@ -21,6 +27,12 @@ function Footer() {
         setPart1({
             left: "-100%",
              transition: "all 1s ease-in-out 0s"
+        })
+        setRightLimit({
+            color: "gray"
+        })
+        setLeftLimit({
+            color: "#000"
         })
     }
     const moveLeftActive = () => {
@@ -32,12 +44,18 @@ function Footer() {
             left: "5%",
              transition: "all 1s ease-in-out 0s"
         })
+        setLeftLimit({
+            color: "gray"
+        })
+        setRightLimit({
+            color: "#000"
+        })
     }
     return (
       
       <footer>
           
-   <button onClick={() => moveLeftActive()} class="leftArrow arrow">{ '<' }</button>
+   <button onClick={() => moveLeftActive()} class="leftArrow arrow" style={leftLimit}>{ '<' }</button>
           <div class="border" id="border">
            
                 
@@ -118,7 +136,7 @@ function Footer() {
               </div>
 
             </div>
-            <button onClick={() => moveRightActive()} className='rightArrow arrow'> { '>' } </button>
+            <button onClick={() => moveRightActive()} style={rightLimit} className='rightArrow arrow'> { '>' } </button>
         </footer>
   )
 }

@@ -6,7 +6,6 @@ body{
     font-family: Poppins;
     background-color: #fff;
     height: 1200px;
-
 }
 aside{
     display: block;
@@ -69,8 +68,9 @@ a{
     position: absolute;
     z-index: -1;
     background-color: #c96b00;
-    border-radius: 0 0 3rem 3rem;
+    border-radius: 3rem;
     width: 60%;
+    min-width: 300px;
     top: 45%;
     height: 350px;
 }
@@ -80,7 +80,7 @@ a{
     top: 200px;
     z-index: -1;
     border-radius: 50%;
-    width: 450px;
+    width: 430px;
     height: 350px;
     box-shadow: -35px 25px 350px #000;
 } 
@@ -111,4 +111,120 @@ a{
     margin-left: 15%;
     padding-left: 40px;
     height: 30px;
+}
+@media screen and (max-width: 1370px) {
+    .shadow{
+        left: 10%;
+        width: 400px;
+    }
+
+
+}
+@media screen and (max-width: 1030px){
+    .shadow{
+        left: 10%;
+        width: 350px;
+    }
+
+    .block_under_img{
+        top: 40%;
+        height: 250px;
+    }
+    
+    .typeOfOrder{
+        position: absolute;
+        top: 15%;
+        width: 450px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    aside{
+        width: 100%;
+        left: 0%;
+        top: 0%;
+        background-image: none;
+    }
+    .wrapperBody{
+        left: 0%;
+        top: 10%;
+        flex-direction: row;
+        justify-content: space-around;
+        border-radius: 0;
+        background-size: 80% 10%;
+        background-position-y: 1.5%;
+        height: 40%;
+    }
+    .shadow{
+        left: 7%;
+        top: 10%;
+    }
+    .block_under_img{
+        width: 40%;
+        position: relative;
+        top: 0%;
+    }
+    .typeOfOrder{
+        position: unset;
+    }
+    .block_under_img>p{
+        left: 20%;
+        top: 10%;
+    }
+    .time___block{
+        position: absolute;
+        top: 60%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .typeOfOrder{
+        position: absolute;
+        top: 15%;
+        width: 550px;
+    }
+}
+@media screen and (max-width: 730px) {
+    .typeOfOrder{
+        position: absolute;
+        left: 1%;
+        top: 15%;
+        width: 350px;
+    }
+    .shadow{
+        width: 250px;
+        height: 250px;
+        left: 10%;
+        top: 20%;
+    }
+    .block_under_img{
+        left: 25%;
+    }
+}
+@media screen and (max-width: 550px) {
+    .wrapperBody{
+        flex-direction: column;
+    }
+    .typeOfOrder{
+        left: 15%;
+    }
+    .shadow{
+        left: 30%;
+    }
+    .block_under_img{
+        width: 80%;
+        top: 35%;
+        left: inherit;
+    }
+    .block_under_img>p{
+        top: 30%;
+    }
+    .time___block{
+        position: absolute;
+        top: 70%;
+    }
+    body{
+        font-family: Poppins;
+        background-color: #fff;
+        height: 1400px;
+    }
+
 }
