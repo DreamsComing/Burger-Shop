@@ -1,36 +1,60 @@
-import React, { useState } from 'react'
+import React, {useState , useReducer } from 'react'
 import './text.css'
 
 function Text() {
-    const [order , setOrder] = useState(1)
-    const [price, setPrice] = useState(12.15)
+    // const [order , setOrder] = useState(1)
+    // const [price, setPrice] = useState(12.15)
+    // const [styleColorDown, setStyleColorDown] = useState({
+    //         color: "#007bff"
+    // })
+    // const [styleColorUp, setStyleColorUp] = useState({
+    //         color:" #007bff"
+    // })
+    // const upOrder = () => {
+    //     if (order < 3) {
+    //         setOrder(order + 1)
+    //         setPrice(price + 12.15)
+    //         setStyleColorDown({
+    //             color:"#007bff"
+    //         })
+    //     } else {
+    //         setStyleColorUp({
+    //             color:'gray'
+    //         })
+    //     } 
+
+        
+    // }
     const [styleColorDown, setStyleColorDown] = useState({
-            color: "#007bff"
+        color: "#007bff"
     })
     const [styleColorUp, setStyleColorUp] = useState({
-            color:" #007bff"
+        color:" #007bff"
     })
-    const upOrder = () => {
-        if (order < 3) {
-            setOrder(order + 1)
-            setPrice(price + 12.15)
-            setStyleColorDown({
+    const manage = (state, action) => {
+        // eslint-disable-next-line default-case
+        switch (action.type) {
+            case "upOrder":
+                return { order: state.order + 1, price: state.price + 12.15 };
+            case "downOrder":
+                return {order: state.order - 1, price: state.price - 12.15}
+            
+        }
+    }
+    const [state, dispatch] = useReducer(manage, {order: 1, price:12.15})
+        // eslint-disable-next-line eqeqeq
+        if (state.order < 3 ) {
+            setStyleColorUp({
                 color:"#007bff"
             })
         } else {
             setStyleColorUp({
-                color:'gray'
+                color: 'gray'
             })
-        } 
-
-        
     }
-    const downOrder = () => {
-        // eslint-disable-next-line eqeqeq
-        if (order > 1 ) {
-            setOrder(order - 1)
-            setPrice(price - 12.15)
-            setStyleColorUp({
+    
+        if (state.order > 3 ) {
+            setStyleColorDown({
                 color:"#007bff"
             })
         } else {
@@ -39,8 +63,6 @@ function Text() {
             })
         }
  
-        
-    }
   return (
     <main>
       <div class="block___order">
@@ -57,27 +79,27 @@ function Text() {
                     <p class="text_total">Total order : <span class="price" /> 
                         
                         <div class="move___price" id="blokPrice">
-                      <span>$</span>  <span class="input_price">{ price.toFixed(2) }</span>
+                         <span>$</span>  <span class="input_price">{ state.price.toFixed(2) }</span> 
                         </div>
                     </p>
                 </div>
                 <div class="block___order_buy">
                     <div class="number_order_main">
-                        <button onClick={() => downOrder()} class="buttons">
+                        <button onClick={() => dispatch({type: "downOrder"})} class="buttons">
                             <span className="arrows down" style={styleColorDown} >{'>'}</span>
                         </button>
     
                         <hr class="left_line line"/>
                         
                        <div class="number___order">
-                      <span class="order" id="orderNumber">{ order }</span>
+                         <span class="order" id="orderNumber">{ state.order }</span> 
                        </div>
     
                         <hr class="right_line line"/>
     
-                        <button onClick={() => upOrder()} id="upButtone" class="buttons">
+                        <button onClick={() => dispatch({type: "upOrder"})} id="upButtone" class="buttons">
                             <span class="arrows up" style={styleColorUp}>{'>'}</span>
-                        </button>
+                        </button> 
                     </div>
 
                     <button class="block__buy">
